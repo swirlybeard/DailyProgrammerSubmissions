@@ -1,0 +1,47 @@
+/*
+Output a string signifying 50 tetromino pieces given to the player using the random bag system. 
+This will be on a single line.
+
+The pieces are as follows:
+
+    O, I, S, Z, L, J, T
+
+    Although the output is semi-random, you can verify whether it is
+     likely to be correct by making sure that pieces do not repeat within chunks of seven.
+
+    sample output:
+
+    LJOZISTTLOSZIJOSTJZILLTZISJOOJSIZLTZISOJTLIOJLTSZO
+
+    OTJZSILILTZJOSOSIZTJLITZOJLSLZISTOJZTSIOJLZOSILJTS
+
+    ITJLZOSILJZSOTTJLOSIZIOLTZSJOLSJZITOZTLJISTLSZOIJO
+
+    we need to:
+    1. make a variable for the pieces and store it
+    2. make a function for making the 50 character long string
+    3. make a for loop
+    4. randomize the pieces in chunks of 7. 
+    5. return the pieces in a 50 character long string on a single line
+  
+*/
+
+const pieces = 'OISZLJT';
+let freeTetros = ["O", "I", "S", "Z", "L", "J", "T"];
+
+function getPieces(length) {
+    var emptyString = '';
+
+    for (let i = 0; i < length; i++) {
+        if (freeTetros.length === 0) { 
+        freeTetros = pieces.split('');
+      }
+        let pieceIndex = Math.floor(Math.random() * freeTetros.length);
+        let tetro = freeTetros[pieceIndex];
+        emptyString += tetro;
+        freeTetros.splice(pieceIndex, 1);
+    }
+        return emptyString;
+}
+
+console.log(getPieces(50))
