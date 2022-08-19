@@ -1,0 +1,24 @@
+function decToHex(value) {
+	var hex = Number(value).toString(16).padStart(2, '0');
+	return hex
+}
+
+function hexColor(red, green, blue) {
+	return "#" + decToHex(red) + decToHex(green) + decToHex(blue);
+}
+
+function blending(hex1, hex2) {
+	var dec1 = parseInt(hex1, 16);
+	var dec2 = parseInt(hex2, 16);
+	var dec3 = dec1 + dec2
+	var blend = Math.floor(dec3 / 2).toString(16).padStart(6, '0');
+	return '#' + blend;
+}
+
+console.log(hexColor(255, 99, 71)); // => "#ff6347"
+console.log(hexColor(184, 134, 11)); // => "#b8860b"
+console.log(hexColor(189, 183, 107)); // => "#bdb76b"
+console.log(hexColor(0, 0, 205)); // => "#0000cd"
+
+console.log(blend("#000000", "#778899")); // "#3C444C"
+console.log(blend("#E6E6FA", "#FF69B4", "#B0C4DE")); // "#DCB1D9"
